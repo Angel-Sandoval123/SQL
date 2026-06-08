@@ -1,4 +1,4 @@
-CREATE TABLE superstore (
+    CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
     category TEXT,
@@ -27,3 +27,23 @@ VALUES
     
     
 -- © Copyright 2025 Break Into Tech  --
+#For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices.
+--prompt 1 had me order the items by their price within the superstore database
+Select Item_name, price
+From superstore
+order by price;
+--prompt 2 had me create a query that showed a statistic about the price of the items
+SELECT max(price), item_name
+FROM superstore
+group by item_name
+order by price desc;
+--prompt 3 had me create a query that showed a statistc about the price of the items in the category kitchen supplies
+Select avg(price), category, item_name
+from superstore
+where category='Kitchen Supplies'
+group by item_name;
+--prompt 4 wants me to creat my own question about the data set and then creat a query that answers it
+--How much of each item do we have? So that we know what we need to order more of?
+Select stock_quantity, item_name
+from superstore
+order by stock_quantity asc;
